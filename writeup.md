@@ -21,8 +21,11 @@ You're reading it!
 
 #### 2. The write-up conveys the an understanding of the network architecture.
 
-The chosen network architecture consists of 3 layers:
-1. Encoder block
+The chosen network architecture can be seen it the figure.
+![Fully convolutional network architecture](images/FCN.png)
+
+The layers of the network are explained below:
+##### 1. Encoder block
 
 This is a convolutional block. It consists of 4 layers. Each of these layers uses 3d kernels (filters) of shape [3,3,input_depth] to extract features from the image. Number of those kernels is equla to the output depth of the layer. 
 
@@ -30,12 +33,12 @@ When kernel swipes the input image, it is shifted by 2 units (pixels) for every 
 
 In those layers, separable convolutions are used - every layer of input image is swept with its own 3x3x1 kernel resulting in image with reduced width and height but same depth, than [1x1xinput_depth] kernales are used to extract features. The number output layers is equal to the number of [1x1xinput_depth] kernels. This approach significantly reduces the number of model parameters.
 
-2. 1 to 1 block
+##### 2. 1 to 1 block
 
 This is also a convolutional layer, but its kernel is {1x1xinput_depth] and the strides are equal to 1. Therefore the size (depth and width) of input and output are the same. Its purpouse is similar to fully connected layer in standard convolutional layer but it is pixel-wise therefor it preserves spatial information.
 
 
-3. Decoder block
+##### 3. Decoder block
 
 The pourpouse of this layer is to upsample the image back to the original size. It uses transpose of the original convolutional layer. Also, while upsampling the image, similar size images from encoding steps are concatenated. This allows better resolution of the overal respones. At the end it uses softmax functionto change the range to the probability scale (probabilitie for all the classes sums to one)
 
