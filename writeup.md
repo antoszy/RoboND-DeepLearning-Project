@@ -84,7 +84,7 @@ The architecture of the network is shown in the figure in section 2. of this wri
 
 1 to 1 convolutional block detects highest level structures in the picture. It uses kernel of size [1x1xinput_depth] and stride equal to 1. This means kernel analizes one pixel at a time dephtwise.
 
-Next step is using a decoder block to upsample (increase resolution) of the output of previus layers to the original image size. After every leayer of upsampling, images from encoding stage of appropiate level (same depth and width) are concatenated and and 1 to 1 convolutional layer is used. Thie allows for more precise recognition of classes for every pixel (mixing high level features with low level pixel-wise features).
+Next step is using a decoder block to upsample (increase resolution) of the output of previus layers to the original image size. A blinear upsamplin function is used. This function estimates value of unknown pixels by taking linear combination of 4 closest known pixels. After every leayer of upsampling, images from encoding stage of appropiate level (same depth and width) are concatenated and 1 to 1 convolutional layer (similar to one described above) is used. Thie allows for more precise recognition of classes for every pixel (mixing high-level low-resolution features with low-level high-resolution features).
 
 At the end a convolutional layer with softmax function is used to differentiate classes in the picture based on features detected by previous layers.
 
