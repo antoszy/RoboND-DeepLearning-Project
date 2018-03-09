@@ -56,6 +56,7 @@ The initial architecture of the network (depths of the layers) was:
 - 1 to 1 block depth: 30
 - decoder blocks depth: 25, 20, 15, 10
 - last convolutional block depth: 3
+
 This network architecture did not allow to score 40% in the final model test. Therefore the depth of decoder blocks was increased to carry on more fetures to following lalyers of the network. Improved dephths of the layers are following:
 - encoder blocks depths: 10, 15, 20, 25
 - 1 to 1 block depth: 30
@@ -112,6 +113,10 @@ The file are supplied in the data/weights folder. The accuracy obtained was equa
 
 ### Future Work
 Network still has some problems differentiating people from sharp objects. 
-Extended dataset would be useful with more images of sharp objects like building's elements taken from various perspectives. 
-Probably increasing the depth of the network would allow network to work at higher level of abstraction.
+
+Extended dataset would be useful with more images of sharp objects like building's elements taken from various perspectives.
+
+Probably increasing the depth of the network would allow network to work at higher level of abstraction which would not allow the netowork to detect people at sharp elements. 
+
+Increasing the size of kernels mighth also allow for detection of higher level features.
 
