@@ -50,6 +50,18 @@ At the end one more 1 to 1 convolutional layer is used with output depth of 3 (n
 
 Layer 1, 2, 3 use batch normalization - every batch of data is normalized not only at the input to the network but also between convolutional layers. This ensures the right distribution of data at the input of each layer, improves statistical properties and allows for higher learning rates. 
 
+##### Network architecture improvement
+The initial architecture of the network (depths of the layers) was:
+- encoder blocks depths: 10, 15, 20, 25
+- 1 to 1 block depth: 30
+- decoder blocks depth: 25, 20, 15, 10
+- last convolutional block depth: 3
+This network architecture did not allow to score 40% in the final model test. Therefore the depth of decoder blocks was increased to carry on more fetures to following lalyers of the network. Improved dephths of the layers are following:
+- encoder blocks depths: 10, 15, 20, 25
+- 1 to 1 block depth: 30
+- decoder blocks depth: 30, 25, 20, 20
+- last convolutional block depth: 3
+The time of network training slightly increased. The overal performance of the network increased to 44% and was satisfactory for the submission.
 
 #### 3. The write-up conveys the student's understanding of the parameters chosen for the the neural network.
 
@@ -98,4 +110,8 @@ The network can only work for the classes of objects that it was trained for. Th
 
 The file are supplied in the data/weights folder. The accuracy obtained was equal to 44%.
 
+### Future Work
+Network still has some problems differentiating people from sharp objects. 
+Extended dataset would be useful with more images of sharp objects like building's elements taken from various perspectives. 
+Probably increasing the depth of the network would allow network to work at higher level of abstraction.
 
